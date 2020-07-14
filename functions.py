@@ -141,7 +141,63 @@ a = [4, 8, 1, 9, 6]
 bsort(a)
 print(a)
 
+#iterable function defining 
+def getsum(iterable):
+    total = 0
+    for i in iterable:
+        total += i
+        
+    return total
 
+t = getsum([10, 20, 30, 40])
+print(t)
 
+#iterable tuple returning 
+def get_sum_avg(iterable):
+    total = 0
+    for i in iterable:
+        total += i
+        
+    avg = total / len(iterable)
+        
+    return total, avg
+
+t, avg = get_sum_avg([10, 20, 30, 40])
+print(t, avg)
+
+#list returning 
+def get_odd_even(iterable):
+    odd = []
+    even = []
+    for i in iterable:
+        if i % 2 == 0:
+            even.append(i)
+        else:
+            odd.append(i)
+            
+    return odd, even
+
+odd, even = get_odd_even([1, 2, 3, 4, 5, 6, 7])
+print(odd)
+print(even)  
+
+#standart deviation example
+def get_mean_stddev(iterable):
+    total = 0
+    for i in iterable:
+        total += i
+    mean = total / len(iterable)
+    
+    total = 0
+    for i in iterable:
+        total += (i - mean) ** 2
+        
+    stddev = (total / len(iterable)) ** 0.5
+    
+    return mean, stddev
+
+mean, stddev = get_mean_stddev([1, 2, 3, 4, 5])
+print(mean)
+print(stddev) 
 
 
