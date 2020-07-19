@@ -184,21 +184,107 @@ disp_banner('steve')
 disp_banner(123)
 
 
+########################  Nested Functions ###########################
 
+#Nested functions: 
+def foo():
+    x = 10
+    def bar():
+        print('bar')
+        def tar():
+            print('tar')
+        tar()
+            
+    print(x)
+    bar()
+    
+foo()
+#global function using nested function: 
+def foo():
+    x = 10
+    def bar():
+        x = 20
+        print(x)
+    bar()
+    print(x)
+        
+        
+foo()
 
+#if you want to use none-local variable you will write this syntax: 
+def foo():
+    a = 10    
+    def bar():
+        nonlocal a
+        a = 20
+    bar()
+    print(a)
+    
+foo()
 
+#nonelocal variable be careful !
+def foo():
+    def bar():
+        nonlocal a
+        a = 10
+    a = 0   #this assignee operations is not working 
+    bar()
+    print(a)
+        
+foo()
 
+#same names function calling 
+def bar():
+    print('global bar')
+    
+def foo():
+    def bar():
+        print("bar in foo is calling")
+    bar()
+    
+foo()
 
+#nested functions example 
+def bar():
+    print('global bar')
+    
+def foo():
+    global bar
+    bar()
+    def bar():
+        print("bar in foo is calling")
+    bar()
+    
+foo()
+bar()
 
+#Nested function return example
+def foo():
+    def bar():
+        print("bar in foo is calling")
+    return bar #retun bar adress
 
+#foo() #if we call this syntax interpreter show error
+f = foo() #print bar in foo function 
+f()
 
+#globals local function using
+x = 10
+y = 20
 
+def foo():
+    print('foo')
 
+g = globals()
 
+val = g['x']
+print(val)
 
+val = g['y']
+print(val)
 
-
-
+val = g['foo']
+print(val)
 
 
 
