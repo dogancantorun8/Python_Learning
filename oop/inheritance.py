@@ -216,32 +216,3 @@ w.disp()
 e=Employee('Dogan')
 print(e.name) 
 
-#8.odevin 2.sorusu için hocanın şablonu 
-def is_leap_year(year):
-    return year % 400 == 0 or year % 4 == 0 and year % 100 != 0
-
-def total_days(day, month, year):
-    montab = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    total = 0
-    for i in range(1900, year):
-        total += 366 if is_leap_year(i) else 365
-    montab[1] = 29 if is_leap_year(year) else 28
-    for i in range(0, month - 1):
-        total += montab[i]
-    total += day
-
-    return total
-
-t = total_days(9, 8, 2020)
-print(t)
-
-def day_text(day, month, year):
-    daytab = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi']
-    total = total_days(day, month, year)
-
-    return daytab[total % 7]
-
-text = day_text(9, 8, 2020)
-print(text)
-
-
