@@ -161,3 +161,16 @@ s = Sample(10, 20)
 s.disp()
 foo(s)
 s.disp()
+
+#__init özet örneği
+class Student:
+    def __init__(self, name, no):
+        self.name = name
+        self.no = no
+
+    def disp(self):
+        print(self.name, self.no)
+
+
+s = Student('Dogancan Torun', 123)
+s.disp()
