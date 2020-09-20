@@ -273,21 +273,43 @@ finally:
     print('finally')
 
 
-#with Deyimi
 
 
-# =============================================================================
-# -try finally deyımlerının daha kompakt seklınde yazımı ıcın with deyımını dusunmusler.
-# -Genel sentaks:
-# with <ifade> as <degisken ismi>:
-# 	suit
-# 
-# -with open("deneme.txt") as f:
-# 	suit
-# 
-# -open(deneme.txt) kısmı calıstırılır ve bu ıslemın sonucu f'ye atanır. Sonra da alttakı suitller calıstırılır. Bu ifadenin bir sınıf turunden olması ve bu sınıfın CONTEXT MANAGMENT PROTOCOL(Baglan Yonetım Protokolu) e uyan bır sınıf olması gerekmektedır. 
-# 
-# -with ifade as degisken: ===>ifade  sınıf turunden olacak ve o sınıf da baglam yonetım protokolune uygun olmaldıır.
-# =============================================================================
+
+# with Deyimi
+# -with ifade as degisken_adi ==>ifade sınıf turunden olacak ve bu da baglam yonetım protokolune uygun olması gerekıyordu.
+# -with deyımı finally ye cok benzer. Garantılı bosaltım yapmak ıcın kullanılan bır deyımdır.
+# -Genel olarak zaten __del__ methodları bosaltım yapıyor garbage collectorler yanı.
+# -BYP(Baglam Yonetım Protokolu) ==>İki tane methodun bulunması gerekmektedir. __enter__ ve __exit__. __enter__'ın sadece self parametresı olacak.
+# __exit__'in ise 3 parametresı mevcuttur ve bunlar genellıkle exc_type, exc_value, traceback'dir.
+# -exc_type ==>exception olusmamıssa one degerını alır, olusmussa olusan exception sınıf turunu  alır.
+# -exc_value==>Olusan exception nesnesi
+# -traceback==>Akıs buraya nasıl gelmıs.
+# with ornek
+class Sample:
+    def __enter__(self):
+        pass
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        pass
+
+
+with Sample() as s:
+    pass
+
+
+# -Yukardakı ornegın parametrelerını de yazdırdıgımız halı:
+class Sample:
+    def __enter__(self):
+        print('__enter__ called')
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        print('__exit__ called:', exc_type, exc_value, traceback)
+
+
+with Sample() as s:
+    print('with suite')
+
 
 
