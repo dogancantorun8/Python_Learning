@@ -87,35 +87,7 @@ print("Setdefault outputs =  {} " .format(d3))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#d.get('anahtar degeri') ==>girilen anahtara ait deger bulunur 
+#d.keys() ==> dictin tüm anahtarlarını elde edebilirim   yalnız iterable elde edilmez "keys=list(d.keys())" seklinde iterable formata cast etmeliyim 
+#d.values() ==> dictin tüm value degerlerini elde edebilirim  yalnız iterable elde edilmez "values=list(d.values())" seklinde iterable formata cast etmeliyim 
+# bir sozlugu iterate edersem anahtarları iterate etmis oluyorum 
